@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LangVault</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo-section">
+                <i class="fas fa-language logo-icon"></i>
+                <h1>LangVault</h1>
+            </div>
+        </header>
+
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <i class="fas fa-book-reader sidebar-icon"></i>
+                <h2>LangVault By OpenRAG</h2>
+            </div>
+            <div class="sidebar-content">
+                <div class="feature-card">
+                    <i class="fa fa-globe" aria-hidden="true"></i>
+                    <p><strong>Your Translator Companion!</strong></p>
+                </div>
+                <p class="sidebar-description">Get ready to experience a different world of books and documents with making and reading your own pdfs and books more accessible to everyone in different languages and make it available worldwide.</p>
+                <div class="features-list">
+                    <div class="feature-item">
+                        <i class="fas fa-globe"></i>
+                        <span>Multiple Languages</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-file-pdf"></i>
+                        <span>PDF Support</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-volume-up"></i>
+                        <span>Audio Output</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <main class="content">
+            {% if error %}
+            <div class="error-message">
+                <i class="fas fa-exclamation-circle"></i>
+                {{ error }}
+            </div>
+            {% endif %}
+
+            <div class="upload-card">
+                <form method="POST" enctype="multipart/form-data" class="upload-form">
+                    <div class="form-group file-upload">
+                        <label for="file">
+                            <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                            <span>Choose a PDF file</span>
+                        </label>
+                        <input type="file" id="file" name="file" accept=".pdf" required>
+                        
+                    </div>
+
+                    <div class="form-group">
+                        <label for="language">
+                            <i class="fas fa-globe-americas"></i>
+                            Target Language
+                        </label>
+                        <input type="text" id="language" name="language" required 
+                               placeholder="Enter target language (e.g., Spanish, French)">
+                    </div>
+
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-translate"></i>
+                        Translate Document
+                    </button>
+                </form>
+            </div>
+
+            {% if translated_text %}
+            <div class="results">
+                <div class="results-header">
+                    <i class="fas fa-check-circle"></i>
+                    <h3>Translation Complete</h3>
+                    <span class="page-count">{{ page_count }} pages processed</span>
+                </div>
+
+                <div class="translated-text">
+                    {{ translated_text | safe | replace('\n', '<br>') }}
+                </div>
+
+                {% if audio_data %}
+                <div class="audio-section">
+                    <div class="section-header">
+                        <i class="fas fa-headphones"></i>
+                        <h3>Audio Preview</h3>
+                    </div>
+                    <audio controls>
+                        <source src="data:audio/mp3;base64,{{ audio_data }}" type="audio/mp3">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+                {% endif %}
+
+                {% if download_data %}
+                <div class="download-section">
+                    <a href="data:text/plain;base64,{{ download_data }}" 
+                       download="langvault.txt" 
+                       class="download-btn">
+                        <i class="fas fa-download"></i>
+                        Download Translation
+                    </a>
+                </div>
+                {% endif %}
+            </div>
+            {% endif %}
+        </main>
+    </div>    
+    <footer class="main-footer">
+        <div class="flashcards-section">
+            <h2 class="flashcards-heading">Why use LangVault</h2>
+        <div class="flashcards-container">
+            <div class="flashcard">
+                <div class="flashcard-inner">
+                    <div class="flashcard-front">
+                        <h2>Free PDF translator</h2>
+                        <p>Translate your PDF using langvault. No installation required. </p>
+                    </div>
+                    <div class="flashcard-back">
+                        <h2>Details</h2>
+                        <p>Translate 5000tokens at once with ease.</p>
+                    </div>
+                </div>
+            </div>
+        
+            <!-- Repeat the flashcard structure for multiple cards -->
+            <div class="flashcard">
+                <div class="flashcard-inner">
+                    <div class="flashcard-front">
+                        <h2>High Accurate AI translation</h2>
+                        <p>Langvault promises high accuracy with less response time.</p>
+                    </div>
+                    <div class="flashcard-back">
+                        <h2>Details</h2>
+                        <p>Make your PDF's available worldwidely with highest accuracy.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="flashcard">
+                <div class="flashcard-inner">
+                    <div class="flashcard-front">
+                        <h2>AI translator for 50+ languages</h2>
+                        <p>Effortlessly translate PDF files into more than 50 languages, including English, French, German, Hindi, and many more.</p>
+                    </div>
+                    <div class="flashcard-back">
+                        <h2>Details</h2>
+                        <p>Make the PDF multilingual With 50+ languages.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="flashcard">
+                <div class="flashcard-inner">
+                    <div class="flashcard-front">
+                        <h2>Maximum Security and Privacy</h2>
+                        <p>Your security and privacy are our priority. All uploaded files are permanently deleted within 60 minutes after processing.</p>
+                    </div>
+                    <div class="flashcard-back">
+                        <h2>Details</h2>
+                        <p>Privacy has always been OpenRAG's first concern in our applications.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="social-links">
+            <a href="https://www.instagram.com/open.rag?igsh=MWRvMmpmMDJ0Ym94NA==" 
+               target="_blank" 
+               class="social-link">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.linkedin.com/company/openrag1/posts/?feedView=all" 
+               target="_blank" 
+               class="social-link">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="mailto:openrag189@gmail.com" class="social-link">
+                <i class="fas fa-envelope"></i>
+            </a>
+        </div>
+        <p class="copyright">Powered by <strong>OpenRAG</strong> | © 2024</p>
+    </footer>
+</body>
+</html>

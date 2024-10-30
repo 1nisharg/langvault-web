@@ -1,0 +1,541 @@
+:root {
+    --primary-color: #10a37f;
+    --primary-light: #1abc9c;
+    --primary-dark: #0a8c6d;
+    --secondary-color: #1a7f64;
+    --background-color: #ffffff;
+    --text-color: #353740;
+    --sidebar-bg: #f7f7f8;
+    --border-color: #e5e5e5;
+    --error-color: #ff4444;
+    --success-color: #28a745;
+    --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --hover-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    color: var(--text-color);
+    line-height: 1.6;
+    background-color: var(--sidebar-bg);
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    grid-template-rows: auto 1fr;
+    min-height: 100vh;
+}
+
+/* Header Styles */
+header {
+    grid-column: 1 / -1;
+    padding: 1.5rem 2rem;
+    background-color: var(--background-color);
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+
+.logo-section {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo-icon {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+}
+
+header h1 {
+    color: var(--primary-color);
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    background-color: var(--background-color);
+    padding: 2rem;
+    border-right: 1px solid var(--border-color);
+}
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+}
+
+.sidebar-icon {
+    font-size: 1.75rem;
+    color: var(--primary-color);
+}
+
+.sidebar h2 {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+}
+
+.feature-card {
+    background: var(--primary-color);
+    color: white;
+    padding: 1.0rem;
+    border-radius: 12px;
+    margin: 1.5rem 0;
+    text-align: center;
+    box-shadow: var(--card-shadow);
+}
+
+.feature-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.sidebar-description {
+    font-size: 0.95rem;
+    color: var(--text-color);
+    margin-bottom: 2rem;
+}
+
+.features-list {
+    display: grid;
+    gap: 1rem;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    background: var(--sidebar-bg);
+    border-radius: 8px;
+    transition: transform 0.2s;
+}
+
+.feature-item:hover {
+    transform: translateX(5px);
+}
+
+.feature-item i {
+    color: var(--primary-color);
+}
+
+/* Main Content Styles */
+.content {
+    padding: 2rem;
+    width: 100%;
+    height: 100%;
+    background-color: var(--sidebar-bg);
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.upload-card {
+    background: white;
+    padding: 0.3rem;
+    border-radius: 16px;
+    box-shadow: var(--card-shadow);
+    width: 100%;
+    max-width: none; /* Remove max-width to allow full stretching */
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.upload-card:hover {
+    box-shadow: var(--hover-shadow);
+}
+
+.upload-form {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.form-group {
+    width: 100%;
+    margin: 0;
+}
+
+.file-upload {
+    width: 100%;
+    min-height: 270px;
+    text-align: center;
+    padding: 3rem;
+    border: 2px dashed var(--border-color);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: border-color 0.3s;
+    margin: 0;
+    background-color: var(--sidebar-bg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.file-upload:hover {
+    border-color: var(--primary-color);
+    background-color: #f0f0f0;
+}
+
+.upload-icon {
+    font-size: 4rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.file-upload label {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.file-upload span {
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    color: var(--text-color);
+}
+
+.file-upload input[type="file"] {
+    display: none;
+}
+
+.file-name {
+    margin-top: 1rem;
+    color: #666;
+    font-size: 1rem;
+}
+
+.form-group label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    font-weight: 500;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 0.5rem;
+    margin-top: 1rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+}
+
+.submit-btn:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+/* Results Styles */
+.results {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 16px;
+    box-shadow: var(--card-shadow);
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex: 1;
+}
+
+.results-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.results-header i {
+    color: var(--success-color);
+    font-size: 1.5rem;
+}
+
+.page-count {
+    margin-left: auto;
+    background: var(--sidebar-bg);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+.translated-text {
+    background: var(--sidebar-bg);
+    padding: 2rem;
+    border-radius: 12px;
+    margin: 1.5rem 0;
+    max-height: 500px;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.audio-section,
+.download-section {
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.download-btn:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+audio {
+    width: 100%;
+    margin-top: 1rem;
+    border-radius: 8px;
+}
+
+.error-message {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background-color: #fff3f3;
+    color: var(--error-color);
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    border: 1px solid #ffe6e6;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .content {
+        padding: 1rem;
+    }
+    
+    .upload-card {
+        padding: 1rem;
+    }
+    
+    .file-upload {
+        min-height: 200px;
+        padding: 1.5rem;
+    }
+    
+    .upload-icon {
+        font-size: 3rem;
+    }
+}
+
+/* Make sure no extra spacing in the container */
+.container {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    grid-template-rows: auto 1fr;
+    min-height: 100vh;
+    width: 100%;
+    gap: 0;
+    background-color: var(--background-color);
+}
+
+.main-footer {
+    margin-top: auto;
+    text-align: center;
+    padding-top: 30px;
+    border-top: 1px solid #ddd;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.social-link {
+    color: #333;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.social-link:hover {
+    color: #007bff;
+}
+
+
+/* Container for Flashcards */
+
+.flashcards-heading {
+    text-align: center;
+    font-size: 2.4rem;
+    color: #1abc9c;
+    margin-bottom: 1rem;
+}
+
+.flashcards-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+/* Flashcard base style */
+.flashcard {
+    width: 200px;
+    height: 100px;
+    perspective: 100px;
+}
+
+/* Inner card that will flip */
+.flashcard-inner {
+    position: relative;
+    width: 80%;
+    height: 80%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+/* Flip effect on hover */
+.flashcard:hover .flashcard-inner {
+    transform: rotateY(180deg);
+}
+
+/* Front and back of the flashcard */
+.flashcard-front, .flashcard-back {
+    position: absolute;
+    width: 80%;
+    height: 80%;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    padding: 20px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Container for Flashcards */
+.flashcards-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+/* Flashcard base style */
+.flashcard {
+    width: 250px;
+    height: 280px;
+    perspective: 1000px;
+}
+
+/* Inner card that will flip */
+.flashcard-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+/* Flip effect on hover */
+.flashcard:hover .flashcard-inner {
+    transform: rotateY(180deg);
+}
+
+/* Front and back of the flashcard */
+.flashcard-front, .flashcard-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    padding: 20px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--card-shadow);
+}
+
+/* Front card style */
+.flashcard-front {
+    background-color: #C3BFFF;
+}
+
+/* Back card style */
+.flashcard-back {
+    background-color:#C3BFFF;
+    transform: rotateY(180deg);
+}
